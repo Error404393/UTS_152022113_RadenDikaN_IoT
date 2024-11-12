@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "author": "defina hazimah",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-mini", "id": "bb1", "top": -39.8, "left": 218.4, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 15.6,
+      "left": 148.2,
+      "attrs": { "color": "red", "flip": "1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 92.4,
+      "left": 167.4,
+      "attrs": { "color": "yellow", "flip": "1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 169.2,
+      "left": 167.4,
+      "attrs": { "color": "green", "flip": "1" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -18.9,
+      "left": -120.6,
+      "attrs": { "temperature": "32.4", "humidity": "40" }
+    },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp1", "top": 38.4, "left": -43.16, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -45.6,
+      "left": 69,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay4", "top": 278.6, "left": -57.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "dht1:VCC", "esp1:3V3", "red", [ "v9.6", "h57.6", "v-57.6" ] ],
+    [ "dht1:SDA", "esp1:32", "green", [ "v0" ] ],
+    [ "dht1:GND", "esp1:GND.1", "black", [ "v9.6", "h19.2", "v67.2" ] ],
+    [ "relay4:VCC", "esp1:5V", "red", [ "h-9.6", "v-57.6" ] ],
+    [ "relay4:GND", "esp1:GND.1", "black", [ "h-19.2", "v-115.6" ] ],
+    [ "relay4:IN", "esp1:13", "green", [ "h-28.8", "v-115.4", "h47.85" ] ],
+    [ "bz1:2", "esp1:19", "green", [ "v0" ] ],
+    [ "esp1:18", "led1:A", "green", [ "h0" ] ],
+    [ "esp1:5", "led2:A", "green", [ "h0" ] ],
+    [ "esp1:17", "led3:A", "green", [ "h76.8", "v48" ] ],
+    [ "esp1:GND.2", "bb1:1b.j", "black", [ "v0" ] ],
+    [ "bz1:1", "bb1:1b.f", "green", [ "v9.6", "h-38.4", "v-86.4", "h144", "v67.2" ] ],
+    [ "led1:C", "bb1:1b.g", "green", [ "v9.6", "h28.4", "v-19.2" ] ],
+    [ "led2:C", "bb1:1b.h", "green", [ "v0", "h18.8", "v-76.8" ] ],
+    [ "led3:C", "bb1:1b.i", "green", [ "v9.6", "h9.2", "v-153.6" ] ]
+  ],
+  "dependencies": {}
+}
